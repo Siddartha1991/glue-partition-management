@@ -1,0 +1,51 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "GlueReadWriteCatalog",
+            "Effect": "Allow",
+            "Action": [
+                "glue:BatchCreatePartition"
+            ],
+            "Resource": [
+                "arn:aws:glue:*:609457042523:database/*_raw",
+                "arn:aws:glue:*:609457042523:catalog",
+                "arn:aws:glue:*:609457042523:table/*_raw/*"
+            ]
+        },
+        {
+            "Sid": "listbucketondatalakeanddataaccount",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::ql-dp-data-raw-*",
+                "arn:aws:s3:::ql-dp-data-raw-*/*",
+                "arn:aws:s3:::ql-dp-data-raw-prcsd-*",
+                "arn:aws:s3:::ql-dp-data-raw-prcsd-*/*",
+                "arn:aws:s3:::ql-datalake-raw-*",
+                "arn:aws:s3:::ql-datalake-raw-*/*",
+                "arn:aws:s3:::ql-dl-raw-*",
+                "arn:aws:s3:::ql-dl-raw-*/*",
+                "arn:aws:s3:::ql-dl-raw-prcsd-*",
+                "arn:aws:s3:::ql-dl-raw-prcsd-*/*"
+            ]
+        },
+        {
+            "Sid": "AllowLambdaToqueryGlueKMS",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt",
+                "kms:Describe*",
+                "kms:Encrypt",
+                "kms:ReEncrypt",
+                "kms:GenerateDataKey*"
+            ],
+            "Resource": [       
+                "arn:aws:kms:us-east-2:609457042523:key/a9228d20-5277-45ec-bafe-79cba0bf5b9c",
+                "arn:aws:kms:us-east-2:609457042523:key/d4dc48ef-93af-482f-8d46-dbc39a583efd"
+            ]
+        }
+    ]
+}

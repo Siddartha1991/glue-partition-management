@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "InvokePermission",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": "arn:aws:lambda:us-east-2:740877538020:function:prod-208385-catalog-glue-partition-mgmt-process"
+        },
+        {
+            "Sid": "GlueReadCatalog",
+            "Effect": "Allow",
+            "Action": ["glue:GetDatabases", "glue:GetTables"],
+            "Resource": [
+                "arn:aws:glue:*:740877538020:database/*_raw",
+                "arn:aws:glue:*:740877538020:catalog",
+                "arn:aws:glue:*:740877538020:table/*_raw/*"
+            ]
+        },
+        {
+            "Sid": "AllowLambdaToqueryGlueKMS",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt",
+                "kms:Describe*",
+                "kms:Encrypt",
+                "kms:ReEncrypt",
+                "kms:GenerateDataKey*"
+            ],
+            "Resource": [       
+                "arn:aws:kms:us-east-2:740877538020:key/3a170b2d-7a41-4195-9b29-47fc657620d6",
+                "arn:aws:kms:us-east-2:740877538020:key/699aa408-7b25-4b67-b0a7-f26d48edc5fd"
+            ]
+        }
+    ]
+}

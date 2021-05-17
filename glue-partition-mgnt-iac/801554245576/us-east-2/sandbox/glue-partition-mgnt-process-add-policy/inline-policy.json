@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "GlueReadWriteCatalog",
+            "Effect": "Allow",
+            "Action": [
+                "glue:BatchCreatePartition"
+            ],
+            "Resource": [
+                "arn:aws:glue:*:801554245576:database/*_raw",
+                "arn:aws:glue:*:801554245576:catalog",
+                "arn:aws:glue:*:801554245576:table/*_raw/*"
+            ]
+        },
+        {
+            "Sid": "listbucketondatalakesandbox",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        }
+    ]
+}

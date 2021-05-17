@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "InvokePermission",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": "arn:aws:lambda:us-east-2:801554245576:function:sbox-208385-catalog-glue-partition-mgmt-process"
+        },
+        {
+            "Sid": "GlueReadCatalog",
+            "Effect": "Allow",
+            "Action": ["glue:GetDatabases", "glue:GetTables"],
+            "Resource": [
+                "arn:aws:glue:*:801554245576:database/*_raw",
+                "arn:aws:glue:*:801554245576:catalog",
+                "arn:aws:glue:*:801554245576:table/*_raw/*"
+            ]
+        }
+    ]
+}
