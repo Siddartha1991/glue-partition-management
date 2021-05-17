@@ -2,7 +2,6 @@
 
    ## Version  -1.0
    Git Repo trigger CICD pipelines for Lambda Code Deployment.
-   Lambda function Name - 'environment-208385-catalog-glue-partition-mgmt-parent'
 
    ## Description:
    Lambda function to extract Tables Information from **RAW databases in Glue Catalog** 
